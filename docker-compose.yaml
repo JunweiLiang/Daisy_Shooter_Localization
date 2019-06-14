@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  webdb:
+    image: mariadb:10.1
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword12345
+      MYSQL_DATABASE: daisy_shooter_localization
+      MYSQL_USER: daisy
+      MYSQL_PASSWORD: mysqlpassword
+    ports: 
+      - "3306:3306"
+    volumes:
+      - ./web_interface/initial.sql:/docker-entrypoint-initdb.d/initial.sql
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 60s
+  webserver:
+    image: php:5.5-apache
+    volumes:
+      - source: ./web_interface
+        target: /var/www/html
+        type: bind
+    ports:
+      - "80:80"
+  python_backend:
+    image: vera:1.0.0
+    
+
+
+    
+
+
+
+
