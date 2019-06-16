@@ -8,8 +8,8 @@ services:
       MYSQL_DATABASE: VERA_Shooter_Localization
       MYSQL_USER: vera
       MYSQL_PASSWORD: mysqlpassword
-    ports: 
-      - "3306:3306"
+    expose: 
+      - 3306
     volumes:
       - ./web_interface/initial.sql:/docker-entrypoint-initdb.d/initial.sql
     deploy:
@@ -19,10 +19,10 @@ services:
         max_attempts: 3
         window: 60s
   webserver:
-    image: vera-web:1.0.0
+    image: yiisoftware/yii2-php:7.3-apache
     volumes:
       - source: ./web_interface
-        target: /var/www/html
+        target: /app/web
         type: bind
     ports:
       - "8080:80"
