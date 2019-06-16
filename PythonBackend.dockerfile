@@ -7,7 +7,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 		python-liblinear \
 		libtcl8.5 \
 		default-jre \
-		wget
+		wget \
+		sox \
+		ffmpeg \
+		parallel \
+		python2.7
 
 ENV PYTHON_PIP_VERSION 19.1.1
 RUN set -ex; \
@@ -28,5 +32,8 @@ RUN set -ex; \
 			\( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
 		\) -exec rm -rf '{}' +; \
 	rm -f get-pip.py
+
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt
 
 ENTRYPOINT ["/bin/bash"]

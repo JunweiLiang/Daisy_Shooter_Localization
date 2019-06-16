@@ -5,8 +5,8 @@ services:
     image: mariadb:10.1
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword12345
-      MYSQL_DATABASE: daisy_shooter_localization
-      MYSQL_USER: daisy
+      MYSQL_DATABASE: VERA_Shooter_Localization
+      MYSQL_USER: vera
       MYSQL_PASSWORD: mysqlpassword
     ports: 
       - "3306:3306"
@@ -19,15 +19,17 @@ services:
         max_attempts: 3
         window: 60s
   webserver:
-    image: php:5.5-apache
+    image: vera-web:1.0.0
     volumes:
       - source: ./web_interface
         target: /var/www/html
         type: bind
     ports:
-      - "80:80"
+      - "8080:80"
   python_backend:
-    image: vera:1.0.0
+    image: vera-backend:1.0.0
+    ports:
+      - "21320:21320"
     
 
 
