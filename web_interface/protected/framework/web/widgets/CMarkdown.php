@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -46,8 +46,8 @@ class CMarkdown extends COutputProcessor
 
 	/**
 	 * Processes the captured output.
-     * This method converts the content in markdown syntax to HTML code.
-     * If {@link purifyOutput} is true, the HTML code will also be purified.
+	 * This method converts the content in markdown syntax to HTML code.
+	 * If {@link purifyOutput} is true, the HTML code will also be purified.
 	 * @param string $output the captured output to be processed
 	 * @see convert
 	 */

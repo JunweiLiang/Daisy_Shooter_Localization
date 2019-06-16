@@ -5,10 +5,11 @@ class UserIdentity extends CUserIdentity
 	/**
 	 * Authenticates a user.
 	 * @return boolean whether authentication succeeds.
+	 * @throws CException
 	 */
 	public function authenticate()
 	{
-		$password=Yii::app()->getModule('gii')->password;
+		$password=Yii::app()->getController()->getModule()->password;
 		if($password===null)
 			throw new CException('Please configure the "password" property of the "gii" module.');
 		elseif($password===false || $password===$this->password)

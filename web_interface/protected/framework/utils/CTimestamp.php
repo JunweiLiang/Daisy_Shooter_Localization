@@ -4,7 +4,7 @@
  *
  * @author Wei Zhuo <weizhuo[at]gamil[dot]com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -67,11 +67,11 @@ class CTimestamp
 		}
 
 		if($month > 2)
-		    $month -= 2;
+			$month -= 2;
 		else
 		{
-		    $month += 10;
-		    $year--;
+			$month += 10;
+			$year--;
 		}
 
 		$day =  floor((13 * $month - 1) / 5) +

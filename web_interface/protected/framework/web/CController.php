@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -330,6 +330,7 @@ class CController extends CBaseController
 	 * The default implementation will throw a 400 HTTP exception.
 	 * @param CAction $action the action being executed
 	 * @since 1.1.7
+	 * @throws CHttpException
 	 */
 	public function invalidActionParams($action)
 	{
@@ -405,6 +406,7 @@ class CController extends CBaseController
 	 * @param string $actionID ID of the action. If empty, the {@link defaultAction default action} will be used.
 	 * @return CAction the action instance, null if the action does not exist.
 	 * @see actions
+	 * @throws CException
 	 */
 	public function createAction($actionID)
 	{
@@ -431,6 +433,7 @@ class CController extends CBaseController
 	 * @param string $requestActionID the originally requested action ID
 	 * @param array $config the action configuration that should be applied on top of the configuration specified in the map
 	 * @return CAction the action instance, null if the action does not exist.
+	 * @throws CException
 	 */
 	protected function createActionFromMap($actionMap,$actionID,$requestActionID,$config=array())
 	{
@@ -807,7 +810,7 @@ class CController extends CBaseController
 	}
 
 	/**
-	 * This method is invoked after the specified is rendered by calling {@link render()}.
+	 * This method is invoked after the specified view is rendered by calling {@link render()}.
 	 * Note that this method is invoked BEFORE {@link processOutput()}.
 	 * You may override this method to do some postprocessing for the view rendering.
 	 * @param string $view the view that has been rendered
@@ -922,7 +925,7 @@ class CController extends CBaseController
 	 */
 	public function renderDynamic($callback)
 	{
-		$n=count($this->_dynamicOutput);
+		$n=($this->_dynamicOutput === null ? 0 : count($this->_dynamicOutput));
 		echo "<###dynamic-$n###>";
 		$params=func_get_args();
 		array_shift($params);
