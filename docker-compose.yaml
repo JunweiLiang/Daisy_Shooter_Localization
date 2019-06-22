@@ -8,8 +8,8 @@ services:
       MYSQL_DATABASE: VERA_Shooter_Localization
       MYSQL_USER: vera
       MYSQL_PASSWORD: mysqlpassword
-    expose: 
-      - 3306
+    ports: 
+      - "3306:3306"
     volumes:
       - ./web_interface/initial.sql:/docker-entrypoint-initdb.d/initial.sql
     deploy:
@@ -27,7 +27,7 @@ services:
     ports:
       - "8080:80"
   python_backend:
-    image: vera-backend:1.0.0
+    image: vera:1.0.0
     ports:
       - "21320:21320"
     

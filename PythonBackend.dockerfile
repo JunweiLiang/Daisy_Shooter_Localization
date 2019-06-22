@@ -33,7 +33,8 @@ RUN set -ex; \
 		\) -exec rm -rf '{}' +; \
 	rm -f get-pip.py
 
-COPY ./requirements.txt requirements.txt
-RUN pip install -r requirements.txt
-
-ENTRYPOINT ["/bin/bash"]
+COPY ./requirements.txt /requirements.txt
+COPY ./python_server /python_server
+RUN pip install -r /requirements.txt
+WORKDIR /python_server
+CMD ["python", "-u", "php_python.py"]
