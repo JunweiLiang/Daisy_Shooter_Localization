@@ -12,6 +12,8 @@ These components are encapsulated into the [docker compose file](./docker-compos
 
 The python backend server has numerous dependencies. These are mostly captured in its [Dockerfile](./PythonBackend.dockerfile). For now, some of the assets downloaded are mounted by the stack as a volume.
 
+`liblinear{,-python}` is installed via debian, though we could switch to using the later packages inside assets.
+
 To build the docker image, do: 
 
     docker build -t vera:1.0.0 -f ./PythonBackend.dockerfile .
@@ -30,7 +32,13 @@ Therefore, for any changes here to stick, you need to delete the old volume from
 
 The web interface uses the Yii _2.0_ images, but that's good enough for us.
 
+The docker local DNS hostname (`webdb`) and password are _hardcoded_ into the Yii app as the connection string. 
+
+TODO(nimish): these params should be injected in via env vars.
+
 Yii 1.1 is EoL in 2020 so we need to move from it soon!
+
+TODO(nimish): move to Flask
 
 ## Deploying the stack
 
@@ -45,11 +53,13 @@ To remove the stack and associated ephemeral components (networks, but NOT volum
 
     docker stack rm vera
 
-The stack is very simple and standardized. However, the bind mounts set inside it assume you are working in the project root directory.
+The stack is very simple and standardized. However, the bind mounts set inside it assume you are working in the project root directory. This is very important as Yii needs access to the runtime directory. We could switch to producing fully self-contained docker containers as our deployable, but that's a decent amount of work and would require CI + CD (TBD) as well as a registry.
 
 ## Ports and such
 
-The web interface is set to listen to `8080`. The mariadb is set to listen on `3306`. The python backend listens on `21320`. 
+The web interface is set to listen to `8080` (inside the container: `80`). The mariadb is set to listen on `3306`. The python backend listens on `21320`. 
+
+If all goes well, just navigate to http://localhost:8080 after the stack is up.
 
 TODO(nimish): these ports should be injected in at runtime.
 
@@ -57,6 +67,9 @@ TODO(nimish): these ports should be injected in at runtime.
 
 You also need to set up the assets directory using the scripts; it's bind mounted into the containers as a volume.
 
+## TODO(nimish): Make
+
+For convenience, the [Makefile](./Makefile) provides commands that automate some of the above. This is a WIP and you should understand what it runs before using it!
 
 
 
