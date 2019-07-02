@@ -36,7 +36,7 @@ class Daisy:
 		self.gunshotFeatureExtractionPath = "gunshotFeatures/"
 
 		# modify the following for new deployment
-		self.safety = os.environ.get("VERASECRETKEY", "verascretkey")
+		self.safety = os.environ.get("VERASECRETKEY", "verasecretkey")
 		self.sfepPath = "/additional_software/sfep_mfcc/"
 		self.erCodePath = '/ml_code/AudioSync/'
 		self.gunshotCodePath = '/ml_code/GunshotDetection/'

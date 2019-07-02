@@ -2578,7 +2578,7 @@ CREATE TABLE `D_models` (
 --
 
 INSERT INTO `D_models` (`id`, `modelname`, `isDeleted`, `userId`, `modelpath`, `isDone`, `type`, `isDefault`) VALUES
-(11, 'Update_20161011', 0, 1, '/usr1/junweil/daisy_gunshot/modelTraining/Updata_20161011_gunshot/Updata_20161011.model', 1, 'gunshot', 1);
+(11, 'Update_20161011', 0, 1, '/app/web/assets/modelTraining/Updata_20161011_gunshot/Updata_20161011.model', 1, 'gunshot', 1);
 
 -- --------------------------------------------------------
 
@@ -2625,11 +2625,11 @@ CREATE TABLE `D_videos` (
 --
 
 INSERT INTO `D_videos` (`id`, `name`, `relatedPath`, `processPath`, `changeTime`, `createTime`, `userId`, `hasImgs`, `imgCount`, `metaPath`, `duration`, `num_frame`, `fps`) VALUES
-(10571, 'firstshots_88dnuVj5SOE.mp4', 'assets/videos/firstshots_88dnuVj5SOE.mp4', '/usr1/junweil/htdocs/gunshot_localization/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_88dnuVj5SOE.mp4', '2019-04-29 09:40:11', '2019-04-26 14:04:01', 5082, 1, 6, '', 43.84, -1, -1),
-(10572, 'firstshots_burst1_muiHkkbPpdU.mp4', 'assets/videos/firstshots_burst1_muiHkkbPpdU.mp4', '/usr1/junweil/htdocs/gunshot_localization/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_burst1_muiHkkbPpdU.mp4', '2019-04-29 09:40:11', '2019-04-26 14:04:01', 5082, 1, 6, '', 48.02, -1, -1),
-(10577, 'firstshots_eB2YUUZjN_Q.mp4', 'assets/videos/firstshots_eB2YUUZjN_Q.mp4', '/usr1/junweil/htdocs/gunshot_localization/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_eB2YUUZjN_Q.mp4', '2019-04-29 09:40:11', '2019-04-26 14:04:01', 5082, 1, 6, '', 20.64, -1, -1),
-(10579, 'firstshots_a-fCJGgqoxs.mp4', 'assets/videos/firstshots_a-fCJGgqoxs.mp4', '/usr1/junweil/htdocs/gunshot_localization/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_a-fCJGgqoxs.mp4', '2019-04-29 09:41:00', '2019-04-29 09:41:00', 5082, 1, 6, '', 161.15, -1, -1),
-(10580, 'firstshots_36_mXwckuEw.mp4', 'assets/videos/firstshots_36_mXwckuEw.mp4', '/usr1/junweil/htdocs/gunshot_localization/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_36_mXwckuEw.mp4', '2019-04-29 09:41:00', '2019-04-29 09:41:00', 5082, 1, 6, '', 89.46, -1, -1);
+(10571, 'firstshots_88dnuVj5SOE.mp4', 'assets/videos/firstshots_88dnuVj5SOE.mp4', '/app/web/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_88dnuVj5SOE.mp4', '2019-04-29 09:40:11', '2019-04-26 14:04:01', 5082, 1, 6, '', 43.84, -1, -1),
+(10572, 'firstshots_burst1_muiHkkbPpdU.mp4', 'assets/videos/firstshots_burst1_muiHkkbPpdU.mp4', '/app/web/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_burst1_muiHkkbPpdU.mp4', '2019-04-29 09:40:11', '2019-04-26 14:04:01', 5082, 1, 6, '', 48.02, -1, -1),
+(10577, 'firstshots_eB2YUUZjN_Q.mp4', 'assets/videos/firstshots_eB2YUUZjN_Q.mp4', '/app/web/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_eB2YUUZjN_Q.mp4', '2019-04-29 09:40:11', '2019-04-26 14:04:01', 5082, 1, 6, '', 20.64, -1, -1),
+(10579, 'firstshots_a-fCJGgqoxs.mp4', 'assets/videos/firstshots_a-fCJGgqoxs.mp4', '/app/web/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_a-fCJGgqoxs.mp4', '2019-04-29 09:41:00', '2019-04-29 09:41:00', 5082, 1, 6, '', 161.15, -1, -1),
+(10580, 'firstshots_36_mXwckuEw.mp4', 'assets/videos/firstshots_36_mXwckuEw.mp4', '/app/web/assets/uploadFiles/232bb443e7dde01b96a36c1bf8fc12e9/firstshots_36_mXwckuEw.mp4', '2019-04-29 09:41:00', '2019-04-29 09:41:00', 5082, 1, 6, '', 89.46, -1, -1);
 
 -- --------------------------------------------------------
 

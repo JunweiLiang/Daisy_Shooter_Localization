@@ -20,6 +20,8 @@ services:
         window: 60s
   webserver:
     image: yiisoftware/yii2-php:7.3-apache
+    environment:
+      VERASECRETKEY: verasecretkey
     volumes:
       - source: ./web_interface
         target: /app/web
@@ -28,6 +30,8 @@ services:
       - "8080:80"
   python_backend:
     image: vera:1.0.0
+    environment:
+      VERASECRETKEY: verasecretkey
     ports:
       - "21320:21320"
     volumes:

@@ -101,7 +101,7 @@
 			// ---- 04/2019 --- need all frames for synchronization
 			"videoFramePath" => "assets/videoFrames/", // videoname.mp4/%d.jpg 
 
-			"ppythonMD5key" => "verascretkey",
+			"ppythonMD5key" => getenv('VERASECRETKEY') ?: 'verasecretkey',
 		);
 	}
 ?>

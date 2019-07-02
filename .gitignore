@@ -1,4 +1,6 @@
-
+.mypy_cache
+additional_software/
+web_interface/assets/
 # Created by https://www.gitignore.io/api/yii,macos
 # Edit at https://www.gitignore.io/?templates=yii,macos
 
