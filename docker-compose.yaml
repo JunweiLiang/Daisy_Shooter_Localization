@@ -1,5 +1,8 @@
 version: '3.7'
 
+
+volumes:
+  webdb_data:
 services:
   webdb:
     image: mariadb:10.1
@@ -12,6 +15,7 @@ services:
       - "3306:3306"
     volumes:
       - ./web_interface/initial.sql:/docker-entrypoint-initdb.d/initial.sql
+      - webdb_data:/var/lib/mysql
     deploy:
       restart_policy:
         condition: on-failure
@@ -41,11 +45,10 @@ services:
       - source: ./additional_software
         target: /additional_software
         type: bind
+
+
+
     
-
-
-    
-
 
 
 
