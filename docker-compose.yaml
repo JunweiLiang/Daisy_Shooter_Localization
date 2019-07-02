@@ -30,6 +30,13 @@ services:
     image: vera:1.0.0
     ports:
       - "21320:21320"
+    volumes:
+      - source: ./ml_code
+        target: /ml_code
+        type: bind
+      - source: ./additional_software
+        target: /additional_software
+        type: bind
     
 
 

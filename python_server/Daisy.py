@@ -1,5 +1,6 @@
 # coding=utf-8
 # base class for everything, just store some params
+import os
 
 class Daisy:
 	def __init__(self):
@@ -35,7 +36,7 @@ class Daisy:
 		self.gunshotFeatureExtractionPath = "gunshotFeatures/"
 
 		# modify the following for new deployment
-		self.safety = "verascretkey"
-		self.sfepPath = "/home/yourusername/VERA_Shooter_Localization/additional_software/sfep_mfcc/"
-		self.erCodePath = '/home/yourusername/VERA_Shooter_Localization/ml_code/AudioSync/'
-		self.gunshotCodePath = '/home/yourusername/VERA_Shooter_Localization/ml_code/GunshotDetection/'
+		self.safety = os.environ.get("VERASECRETKEY", "verascretkey")
+		self.sfepPath = "/additional_software/sfep_mfcc/"
+		self.erCodePath = '/ml_code/AudioSync/'
+		self.gunshotCodePath = '/ml_code/GunshotDetection/'
