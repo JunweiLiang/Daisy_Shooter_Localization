@@ -57,13 +57,13 @@ return array(
 			),
 		),
 		
-		'db'=>array(
-			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-		),
+		//'db'=>array(
+		//	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
+		//),
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=VERA_Shooter_Localization',
+			'connectionString' => 'mysql:host=webdb;dbname=VERA_Shooter_Localization',
 			'emulatePrepare' => true,
 			'username' => 'vera',
 			'password' => 'mysqlpassword',

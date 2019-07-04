@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -27,7 +27,7 @@
  * Options are bound to action parameters via parameter names. For example, the following
  * action method will allow us to run a command with <code>yiic sitemap --type=News</code>:
  * <pre>
- * class SitemapCommand {
+ * class SitemapCommand extends CConsoleCommand {
  *     public function actionIndex($type) {
  *         ....
  *     }
@@ -274,9 +274,9 @@ abstract class CConsoleCommand extends CComponent
 		$help='Usage: '.$this->getCommandRunner()->getScriptName().' '.$this->getName();
 		$options=$this->getOptionHelp();
 		if(empty($options))
-			return $help;
+			return $help."\n";
 		if(count($options)===1)
-			return $help.' '.$options[0];
+			return $help.' '.$options[0]."\n";
 		$help.=" <action>\nActions:\n";
 		foreach($options as $option)
 			$help.='    '.$option."\n";
@@ -295,29 +295,36 @@ abstract class CConsoleCommand extends CComponent
 	{
 		$options=array();
 		$class=new ReflectionClass(get_class($this));
-        foreach($class->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
-        {
-        	$name=$method->getName();
-        	if(!strncasecmp($name,'action',6) && strlen($name)>6)
-        	{
-        		$name=substr($name,6);
-        		$name[0]=strtolower($name[0]);
-        		$help=$name;
+		foreach($class->getMethods(ReflectionMethod::IS_PUBLIC) as $method)
+		{
+			$name=$method->getName();
+			if(!strncasecmp($name,'action',6) && strlen($name)>6)
+			{
+				$name=substr($name,6);
+				$name[0]=strtolower($name[0]);
+				$help=$name;
 
 				foreach($method->getParameters() as $param)
 				{
 					$optional=$param->isDefaultValueAvailable();
 					$defaultValue=$optional ? $param->getDefaultValue() : null;
+					if(is_array($defaultValue)) {
+						$defaultValue = str_replace(array("\r\n", "\n", "\r"), "", print_r($defaultValue, true));
+					}
 					$name=$param->getName();
+
+					if($name==='args')
+						continue;
+
 					if($optional)
 						$help.=" [--$name=$defaultValue]";
 					else
 						$help.=" --$name=value";
 				}
 				$options[]=$help;
-        	}
-        }
-        return $options;
+			}
+		}
+		return $options;
 	}
 
 	/**
@@ -348,15 +355,15 @@ abstract class CConsoleCommand extends CComponent
 	 *   by the function will be saved into the target file.</li>
 	 * <li>params: optional, the parameters to be passed to the callback</li>
 	 * </ul>
+	 * @param boolean $overwriteAll whether to overwrite all files.
 	 * @see buildFileList
 	 */
-	public function copyFiles($fileList)
+	public function copyFiles($fileList,$overwriteAll=false)
 	{
-		$overwriteAll=false;
 		foreach($fileList as $name=>$file)
 		{
-			$source=strtr($file['source'],'/\\',DIRECTORY_SEPARATOR);
-			$target=strtr($file['target'],'/\\',DIRECTORY_SEPARATOR);
+			$source=strtr($file['source'],'/\\',DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR);
+			$target=strtr($file['target'],'/\\',DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR);
 			$callback=isset($file['callback']) ? $file['callback'] : null;
 			$params=isset($file['params']) ? $file['params'] : null;
 
@@ -494,6 +501,7 @@ abstract class CConsoleCommand extends CComponent
 			'/(c)hild$/i' => '\1hildren',
 			'/(h)uman$/i' => '\1umans',
 			'/(m)an$/i' => '\1en',
+			'/(s)taff$/i' => '\1taff',
 			'/(t)ooth$/i' => '\1eeth',
 			'/(p)erson$/i' => '\1eople',
 			'/([m|l])ouse$/i' => '\1ice',

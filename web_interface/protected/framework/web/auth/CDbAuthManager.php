@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -94,7 +94,7 @@ class CDbAuthManager extends CAuthManager
 			return false;
 		Yii::trace('Checking permission "'.$item->getName().'"','system.web.auth.CDbAuthManager');
 		if(!isset($params['userId']))
-		    $params['userId'] = $userId;
+			$params['userId'] = $userId;
 		if($this->executeBizRule($item->getBizRule(),$params,$item->getData()))
 		{
 			if(in_array($itemName,$this->defaultRoles))
@@ -421,7 +421,7 @@ class CDbAuthManager extends CAuthManager
 	 * Creates an authorization item.
 	 * An authorization item represents an action permission (e.g. creating a post).
 	 * It has three types: operation, task and role.
-	 * Authorization items form a hierarchy. Higher level items inheirt permissions representing
+	 * Authorization items form a hierarchy. Higher level items inherit permissions representing
 	 * by lower level items.
 	 * @param string $name the item name. This must be a unique identifier.
 	 * @param integer $type the item type (0: operation, 1: task, 2: role).

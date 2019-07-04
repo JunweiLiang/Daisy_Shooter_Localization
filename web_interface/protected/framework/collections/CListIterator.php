@@ -4,12 +4,12 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
 /**
- * CListIterator implements an interator for {@link CList}.
+ * CListIterator implements an iterator for {@link CList}.
  *
  * It allows CList to return a new iterator for traversing the items in the list.
  *
@@ -27,10 +27,6 @@ class CListIterator implements Iterator
 	 * @var integer index of the current item
 	 */
 	private $_i;
-	/**
-	 * @var integer count of the data items
-	 */
-	private $_c;
 
 	/**
 	 * Constructor.
@@ -40,7 +36,6 @@ class CListIterator implements Iterator
 	{
 		$this->_d=&$data;
 		$this->_i=0;
-		$this->_c=count($this->_d);
 	}
 
 	/**
@@ -88,6 +83,6 @@ class CListIterator implements Iterator
 	 */
 	public function valid()
 	{
-		return $this->_i<$this->_c;
+		return $this->_i<count($this->_d);
 	}
 }

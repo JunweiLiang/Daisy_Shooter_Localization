@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -102,6 +102,7 @@ class CFormElementCollection extends CMap
 	/**
 	 * Removes the specified element by key.
 	 * @param string $key the name of the element to be removed from the collection
+	 * @throws CException
 	 */
 	public function remove($key)
 	{

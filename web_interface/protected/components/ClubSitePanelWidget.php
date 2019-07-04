@@ -32,7 +32,7 @@
 
 			$this->render('clubSitePanel',array(
 				'id' => $this->id,
-				'width' => $this->width,
+				'width' => (int)$this->width,
 				'panelParam' => $this->panelParam,
 				'showBroadCast' => false,//直接阉割
 			));

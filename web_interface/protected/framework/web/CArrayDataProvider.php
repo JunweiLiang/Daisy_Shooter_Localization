@@ -4,7 +4,7 @@
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @link http://www.yiiframework.com/
- * @copyright Copyright &copy; 2008-2011 Yii Software LLC
+ * @copyright 2008-2013 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
 
@@ -18,7 +18,9 @@
  *
  * Elements in the raw data array may be either objects (e.g. model objects)
  * or associative arrays (e.g. query results of DAO).
- *
+ * Make sure to set the {@link keyField} property to the name of the field that uniquely
+ * identifies a data record or false if you do not have such a field.
+ * 
  * CArrayDataProvider may be used in the following way:
  * <pre>
  * $rawData=Yii::app()->db->createCommand('SELECT * FROM tbl_user')->queryAll();
@@ -47,8 +49,9 @@
 class CArrayDataProvider extends CDataProvider
 {
 	/**
-	 * @var string the name of key field. Defaults to 'id'. If it's set to false,
-	 * keys of $rawData array are used.
+	 * @var string the name of the key field. This is a field that uniquely identifies a
+	 * data record. In database this would be the primary key.
+	 * Defaults to 'id'. If it's set to false, keys of {@link rawData} array are used.
 	 */
 	public $keyField='id';
 	/**
@@ -126,7 +129,7 @@ class CArrayDataProvider extends CDataProvider
 	 */
 	protected function sortData($directions)
 	{
-		if(empty($directions))
+		if(empty($directions) || empty($this->rawData))
 			return;
 		$args=array();
 		$dummy=array();
@@ -144,6 +147,13 @@ class CArrayDataProvider extends CDataProvider
 			$dummy[]=&$direction;
 			unset($direction);
 		}
+
+		// This fix is used for cases when main sorting specified by columns has equal values
+		// Without it it will lead to Fatal Error: Nesting level too deep - recursive dependency?
+		$args[]=range(1,count($this->rawData));
+		$args[]=SORT_ASC;
+		$args[]=SORT_NUMERIC;
+
 		$args[]=&$this->rawData;
 		call_user_func_array('array_multisort', $args);
 	}
