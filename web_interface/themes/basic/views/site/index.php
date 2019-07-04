@@ -253,8 +253,10 @@ div.content div.intro{
 		<a class="btn btn-info" href="#bib">BibTex</a>
 		&nbsp;&nbsp;&nbsp;
 		<a class="btn btn-info" href="https://github.com/JunweiLiang/VERA_Shooter_Localization">Source Code/Models</a>
+		&nbsp;&nbsp;&nbsp;
+		<a class="btn btn-success" href="VERA_3D_Reconstruction/">3D Reconstruction</a>
 	</div>
-	<div class="intro" style="text-align:center;font-size:1.3em;line-height:50px;font-weight:bold;">
+	<div class="intro" style="text-align:center;font-size:1.2em;line-height:50px;font-weight:bold;">
 		We introduce the VERA system, enabled by established machine learning techniques and physics models, that can localize the shooter location only based on a couple of user-generated videos that capture the gunshot sound.
 		<br/>
 		<img style="height:230px;margin-right:20px;"src="<?php echo Yii::app()->baseUrl;?>/documents/method1.png"></img>
@@ -276,7 +278,7 @@ div.content div.intro{
 		<div class="citations" style="font-size:1.2em;">
 			<a name="bib"></a>
 			If you find this system helpful to your project/report/research, please cite the following papers:
-			<textarea style="width:90%;height:480px;" disabled>@article{liang2019vera,
+			<textarea style="width:90%;height:480px;cursor: text;" disabled>@article{liang2019vera,
   	title={Technical Report of the Video Event Reconstruction and Analysis (VERA) System - Shooter Localization, Models, Interface, and Beyond},
   	author={Liang, Junwei and Aronson, Jay D. and Hauptmann, Alexander},
   	journal={arXiv preprint arXiv:1905.13313},
